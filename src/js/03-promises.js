@@ -1,4 +1,4 @@
-// import Notiflix from 'notiflix';
+import Notiflix from 'notiflix';
 
 const form = document.querySelector(".form");
 
@@ -24,7 +24,7 @@ form.addEventListener("submit", (event)=>{
       Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`)
     })
   }
-})
+});
 
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
