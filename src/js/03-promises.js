@@ -12,18 +12,19 @@ form.addEventListener("submit", (event)=>{
   for (let i = 0; i<amount; i++){
     const position = i + 1;
     const promiseDelay = delay + (i * step);
-
-    createPromise(position,promiseDelay)
-    .then(({position, delay})=>{
-      console.log (`✅ Fulfilled promise ${position} in ${delay}ms`);
-      Notiflix.Notify.success (`✅ Fulfilled promise ${position} in ${delay}ms`);
-
-    })
-    .catch (({position, delay})=>{
-      console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-      Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`)
-    })
+    setTimeout(()=>{
+      createPromise(position, promiseDelay)
+      .then(({position,delay})=>{
+        // console.log (`✅ Fulfilled promise ${position} in ${delay}ms`);
+        Notiflix.Notify.success (`✅ Fulfilled promise ${position} in ${delay}ms`);
+      })
+      .catch (({position, delay})=>{
+        // console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+        Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`)
+      })
+    }, promiseDelay)
   }
+  
 });
 
 function createPromise(position, delay) {
